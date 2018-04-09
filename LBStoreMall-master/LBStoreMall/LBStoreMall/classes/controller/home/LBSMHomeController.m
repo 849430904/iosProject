@@ -172,10 +172,13 @@ static NSString *const HotCommendFootView = @"LBSMHotCommendFootView";
     _homeGridArray = [LBSMHomeGrid mj_objectArrayWithFilename:@"GoodsGrid.plist"];
 //    [self.collectionView reloadData];
 }
-/// 代理
+#pragma mark - UICollectionViewDataSource
+// 指定Section个数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 5;
 }
+
+// 指定section中的collectionViewCell的个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
         /// 九宫格
@@ -199,6 +202,9 @@ static NSString *const HotCommendFootView = @"LBSMHotCommendFootView";
     }
     return 0;
 }
+
+#pragma mark - UICollectionViewDelegateFlowLayout  
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *collectionViewcell = nil;
     if (indexPath.section == 0) {

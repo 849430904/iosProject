@@ -116,7 +116,9 @@
 
 * section 1的顶部焦点图滚动采用了一个第三方框架来[实现](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第0组/LBSMSlideshowHeadView.m)
 * section 1的顶部焦点图上下滚动分为三部份：
-
+![](img/03.png),其中左边部份固定，右边的两部份为两按钮，且可以滚动，[实现源码](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/common/DCNumericalScrollView/DCNumericalScrollView.m)
+* section 2的实现思路如下：
+![](img/04.png)
 
 ----
 ### 直播 https://github.com/ChinaArJun/Tencent-NOW 

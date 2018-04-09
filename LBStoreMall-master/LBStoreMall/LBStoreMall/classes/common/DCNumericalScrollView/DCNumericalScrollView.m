@@ -22,12 +22,13 @@
     
     self = [super initWithFrame:frame];
     if (self) {
+        
         self.imageView = [[UIImageView alloc]init];
         self.imageView.image = [UIImage imageNamed:imageName];
         self.imageView.contentMode = UIViewContentModeCenter;
         [self addSubview:self.imageView];
         
-        //图片的约束
+        //图片的约束 //左边固定的图片
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self);
             make.left.mas_equalTo(self);
@@ -74,7 +75,8 @@
                 }];
                 
                 [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-                    [make.left.mas_equalTo(imagesBtn.mas_right)setOffset:10];
+                    make.left.mas_equalTo(self.imageView.mas_right).offset(10);
+                    [make.left.mas_equalTo(imagesBtn.mas_right) setOffset:10];
                     make.centerY.mas_equalTo(self);
                     make.right.mas_equalTo(self);
                     make.height.mas_equalTo(self).multipliedBy(0.8);

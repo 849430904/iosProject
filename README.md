@@ -117,7 +117,7 @@
 * section 1的顶部焦点图滚动采用了一个第三方框架来[实现](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第0组/LBSMSlideshowHeadView.m)
 * section 1的顶部焦点图上下滚动分为三部份：
 ![](img/03.png),其中左边部份固定，右边的两部份为两按钮，且可以滚动，[实现源码](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/common/DCNumericalScrollView/DCNumericalScrollView.m)
-* section 2的实现思路如下：
+* section 2的实现思路如下：[自定义view](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第1组/LBSMHaoHuoHeadView.m) [自定义cell的源码（中间其实是一个collectionView,里面又有一些小的itemcell）](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第1组/LBSMHaoHuoCell.m)
 ![](img/04.png)
 
 ----

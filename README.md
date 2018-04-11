@@ -224,6 +224,12 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
     
 ```
 * 分类效果：![](img/06.png),当点击左边table的时候：![](img/07.png)，注意`        [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];`，会滚动到指定section的第0行；
+* [WTKGoodsVC商品行情分析](WTKMVVMRAC-master-master/WTKWineMVVM/WTKWineMVVM/Class/ViewController/WTKGoodsVC.m)
+* ![](img/08.png) 
+
+* 订单状态 ![](img/09.png)
+* 订单列表![](img/10.png)
+
 * Swift项目
 ----
 ### Swift-BanTang-master

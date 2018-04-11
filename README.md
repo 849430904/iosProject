@@ -127,8 +127,22 @@
 
 ---
 
-###酒运达 [来源](https://github.com/penghero/WTKMVVMRAC-master)
-[ReadME](WTKMVVMRAC-master-master/README.md)
+###酒运达 [来源](https://github.com/penghero/WTKMVVMRAC-master)  [ReadME](WTKMVVMRAC-master-master/README.md)
+* 技术点： rectiveCocoa(把业务放在ViewMode里，减少了控制器代码)
+
+``` 
+绑定属性或viewMode：
+RAC(TARGET, [KEYPATH, [NIL_VALUE]]):用于给某个对象的某个属性绑定。
+// 只要文本框文字改变，就会修改label的文字
+RAC(self.labelView,text) = _textField.rac_textSignal;
+RACObserve(self, name) :监听某个对象的某个属性,返回的是信号。
+//只要self.viewModel的headData发生了改变，就通知self.collectionView headArray
+RAC(self.collectionView,headArray)  = RACObserve(self.viewModel, headData);
+RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程。(如按钮事件、网络请求)
+
+```
+* [RACCommand使用步骤](../MyiOSStudy/基本资料/ReactiveCocoa/README.md)
+* 首页效果 ![](img/05.png)
 
 * Swift项目
 ----

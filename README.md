@@ -142,8 +142,88 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 
 ```
 * [RACCommand使用步骤](../MyiOSStudy/基本资料/ReactiveCocoa/README.md)
-* 首页效果 ![](img/05.png)
+* 首页效果 ![](img/05.png),首页分为上、下部份，下面为一个大的collectView；上面又分为两部份：其中上半部份为一个collectionView,下半部份在collectionView下面添加一排按钮；头部下半份那一排按钮事件处理：
 
+
+1，顶部自定义头部[WTKHomeHeadView](WTKMVVMRAC-master-master/WTKWineMVVM/WTKWineMVVM/Class/View/cell/WTKHomeHeadView.m)中
+
+```
+- (void)configView
+{
+    ....
+    NSArray *lableArray = @[@"酒库",@"推荐有奖",@"酒卷",@"订单"];
+    float buttonW = 50;// btn的边长
+    for (int i=0; i<4; i++) {
+        float columnInterval = (kWidth - 200)/5.0;
+        
+        float x = columnInterval+(buttonW+columnInterval)*i;
+        float y = self.collectionView.frame.size.height + 10;
+        
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+        button.tag = 100 + i;
+        button.frame = CGRectMake( x, y , 45, 45);
+        ......
+        [self addSubview:label];
+        //订阅btn按钮事件
+        [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            @strongify(self);
+            UIButton *btn = x;
+            //将信号发送出去 ；self.btnSubject 在本类init方法中就初始化了
+            [self.btnSubject sendNext:[NSNumber numberWithInteger:btn.tag]];
+        }];
+    }
+}
+```
+2，[WTKHomeCollectionView](WTKMVVMRAC-master-master/WTKWineMVVM/WTKWineMVVM/Class/View/WTKHomeCollectionView.m)订阅按钮发出来的信号：
+
+```
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    
+    WTKHomeHeadView *head = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+    head.dataArray = self.headArray.mutableCopy;
+    NSLog(@"self.headArray:%d   %@",[self.headArray count],self.headArray);
+    @weakify(self);
+    [head.bannerSubject subscribeNext:^(id x) {
+        @strongify(self);
+        NSInteger num = [x integerValue];
+        [self.viewModel.headCommand execute:self.headArray[num]];
+    }];
+    [head.btnSubject subscribeNext:^(id x) {
+        @strongify(self);
+        //执行viewModel中的业务方法
+        [self.viewModel.btnCommand execute:x];
+    }];
+    return head;
+}
+
+```
+3，[WTKHomeViewModel.m](WTKMVVMRAC-master-master/WTKWineMVVM/WTKWineMVVM/Class/ViewModel/WTKHomeViewModel.m)中
+
+```
+
+    self.btnCommand     = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
+        NSLog(@"%@",input);
+        NSInteger tag   = [input integerValue];
+        switch (tag) {
+            。。。。
+            case 101:
+            {
+                WTKRecommendViewModel *viewModel = [[WTKRecommendViewModel alloc]initWithService:self.services params:@{@"title":@"推荐有奖"}];
+                self.naviImpl.className = @"WTKRecommendVC";
+                [self.naviImpl pushViewModel:viewModel animated:YES];
+            }
+            。。。
+                break;
+            default:
+                break;
+        }
+        return [RACSignal empty];
+    }];
+    
+```
+* 分类效果：![](img/06.png),当点击左边table的时候：![](img/07.png)，注意`        [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];`，会滚动到指定section的第0行；
 * Swift项目
 ----
 ### Swift-BanTang-master

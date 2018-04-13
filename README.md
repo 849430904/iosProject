@@ -230,7 +230,7 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 * 订单状态 ![](img/09.png)
 * 订单列表![](img/10.png)
 
-## [组件化项目](https://github.com/madaoCN/NonBaseClass-MVVM-ReactiveObjc) 
+## 组件化项目 [来源](https://github.com/madaoCN/NonBaseClass-MVVM-ReactiveObjc) [思路](https://github.com/MrTung/MTRouter)
 ---
 
 

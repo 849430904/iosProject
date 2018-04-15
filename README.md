@@ -230,7 +230,7 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 * 订单状态 ![](img/09.png)
 * 订单列表![](img/10.png)
 
-## 组件化项目 [来源](https://github.com/madaoCN/NonBaseClass-MVVM-ReactiveObjc) [思路](https://github.com/MrTung/MTRouter)
+## [组件化项目](https://github.com/madaoCN/NonBaseClass-MVVM-ReactiveObjc) 
 ---
 
 
@@ -242,6 +242,96 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 
 ###swift3.0高仿微信 https://github.com/shaoyanglichao01/LXFWeChat
 
+* 微信页面
+![](img/11.png)
+
+```
+  1，顶部是一个itembar。注意：用了一个fixedSpace item来控制实际itembar的位置：
+  fileprivate func addFixedSpace(with barItem: UIBarButtonItem, direction: BarBtnItemDirection) {
+    let negativeSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+    negativeSpacer.width = -11//negativeSpacer用来占位的
+    switch direction {
+    case .left:
+        navigationItem.leftBarButtonItems = [negativeSpacer, barItem]
+    default:
+        navigationItem.rightBarButtonItems = [negativeSpacer, barItem]
+    }
+}
+
+2，tableview用了懒加载
+    // tableView
+    lazy var tableView: UITableView = { [unowned self] in
+        let tableView = UITableView(frame: self.view.bounds, style: .plain)
+        .....      
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0)
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 44, 0)
+        tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0)
+        tableView.tableFooterView = UIView()
+        return tableView
+    }()
+3, tableHeaderView对应上面的搜索，
+	    // 搜索控制器
+	let searchResultVC = LXFBaseController()
+	searchResultVC.view.backgroundColor = UIColor.red
+	let searchController = LXFSearchController(searchResultsController: searchResultVC)
+	self.searchController = searchController
+	    
+	// 添加tableView
+	tableView.tableHeaderView = searchController.searchBar
+	
+4，tableView中的Cell用到了SnapKit自动约束框架
+    fileprivate func setup() {
+        self.addSubview(avatarView)
+        self.addSubview(nameLabel)
+        self.addSubview(detailLabel)
+        self.addSubview(timeLabel)
+        self.addSubview(tipBadge)
+        
+        let margin: CGFloat = 10
+        // 头像
+        avatarView.snp.makeConstraints { (make) in
+            make.left.top.equalTo(self).offset(margin)
+            make.bottom.equalTo(self.snp.bottom).offset(-margin)
+            make.height.equalTo(avatarView.snp.width)
+        }
+       
+        //名字
+        nameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(avatarView.snp.right).offset(margin)
+            make.top.equalTo(avatarView.snp.top).offset(margin * 0.5)
+            make.right.equalTo(self.snp.right)
+            make.bottom.equalTo(avatarView.snp.centerY).offset(-5)
+        }
+        
+        //名字下面的灰色文字
+        detailLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(nameLabel.snp.left)
+            make.bottom.equalTo(avatarView.snp.bottom).offset(-margin * 0.5)
+            make.top.equalTo(avatarView.snp.centerY).offset(5)
+            make.right.equalTo(self.snp.right).offset(-15)
+        }
+        //最右边的时间
+        timeLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.right).offset(-10)
+            make.top.equalTo(nameLabel.snp.top)
+        }
+        
+         //头像上面的number,tipBadge是一个BadgeSwift，圆角：badge.cornerRadius = 9
+        tipBadge.snp.makeConstraints { (make) in
+            make.centerX.equalTo(avatarView.snp.right)
+            make.centerY.equalTo(avatarView.snp.top)
+        }
+    }
+  
+```
+* 通讯录
+![](img/12.png)
+
+```
+  1,每个cell其实都一样，左边图片+右边文字
+  2，排序利用了tableview自带的排序
+```
 ----
 
 	* '++' is deprecated: it will be removed in Swift 3

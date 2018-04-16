@@ -332,9 +332,17 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
   1,每个cell其实都一样，左边图片+右边文字
   2，排序利用了tableview自带的排序
 ```
+
+* 键盘界面：
+![](img/13.png)
+
+* 聊天界面的布局：
+![](img/14.png)
 ----
 
-	* '++' is deprecated: it will be removed in Swift 3
+
+
+* '++' is deprecated: it will be removed in Swift 3
 	
 	```
 	for var i = 0 ; i < data?.count; i++

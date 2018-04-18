@@ -358,10 +358,25 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	 let path = Bundle.main.url(forResource:"tutorials", withExtension: "json") 	
 	
 	``` 
-	
+
+#### [仿新浪微博中间凸起的tabBar](https://github.com/kangbingbing/KBCustomCenterTabbar)
+
+--- 
+  
+  
+----
+
+#### 组件化方案
+* [组件化1](http://www.code4app.com/thread-11117-1-1.html)
+* [组件化2](http://www.code4app.com/thread-14917-1-1.html)
+
+
+-----
 	
 * 常用第三方库
 	* [首页轮播图 ](https://github.com/gsdios/SDCycleScrollView)
 	* [ReactiveCocoa 响应式编程](https://github.com/AllenSWB/ReactiveCocoaStudy)
 	* [二维码](https://github.com/kingsic/SGQRCode)
 	* [Swift 自动布局框架SnapKit](http://www.hangge.com/blog/cache/detail_1097.html)
+	
+	

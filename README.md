@@ -375,6 +375,70 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
   ``` 
 ----
 
+#### 常用二维码效果图 ![](img/17.png) ，[自定义二维码View](https://github.com/kingsic/SGQRCode/blob/master/SGQRCode/SGQRCodeScanningView.m)  [二维码控制器](https://github.com/kingsic/SGQRCode/blob/master/SGQRCode/SGQRCodeScanManager.m)，实现思路：
+
+```
+  1，整个二维码页面为一个自定义的View,中间的框为一个自定义View:
+	 /** 扫描内容的 W 值 */
+	#define scanBorderW 0.7 * self.frame.size.width
+	/** 扫描内容的 x 值 */
+	#define scanBorderX 0.5 * (1 - 0.7) * self.frame.size.width
+	/** 扫描内容的 Y 值 */
+	#define scanBorderY 0.5 * (self.frame.size.height - scanBorderW)
+	- (UIView *)contentView {//为中间框中自定义View
+	    if (!_contentView) {
+	        _contentView = [[UIView alloc] init];
+	        _contentView.frame = CGRectMake(scanBorderX, scanBorderY, scanBorderW, scanBorderW);
+	        _contentView.clipsToBounds = YES;
+	        _contentView.backgroundColor = [UIColor clearColor];
+	    }
+	    return _contentView;
+	} 
+ 2，在整个View的drawRect方法中绘制四周的边框线：
+	 - (void)drawRect:(CGRect)rect {
+	    [super drawRect:rect];
+	    
+	    /// 边框 frame
+	    CGFloat borderW = scanBorderW;
+	    CGFloat borderH = borderW;
+	    CGFloat borderX = scanBorderX;
+	    CGFloat borderY = scanBorderY;
+	    CGFloat borderLineW = 0.2;
+	
+	    /// 空白区域设置
+	    [[[UIColor blackColor] colorWithAlphaComponent:self.backgroundAlpha] setFill];
+	    UIRectFill(rect);
+	    .....
+	 }
+	
+3,	添加定时器，并初始化中间移动图片的frame:
+	#pragma mark - - - 添加定时器
+	- (void)addTimer {
+	    CGFloat scanninglineX = 0;
+	    CGFloat scanninglineY = 0;
+	    CGFloat scanninglineW = 0;
+	    CGFloat scanninglineH = 0;
+	    if (self.scanningAnimationStyle == ScanningAnimationStyleGrid) {
+	        [self addSubview:self.contentView];
+	        [_contentView addSubview:self.scanningline];
+	        scanninglineW = scanBorderW;
+	        scanninglineH = scanBorderW;
+	        scanninglineX = 0;
+	        scanninglineY = - scanBorderW;//其实scanningline的Y坐标已经偏移到父视图外面了
+	        //让移动图片偏移到父视图外面
+	        _scanningline.frame = CGRectMake(scanninglineX, scanninglineY, scanninglineW, scanninglineH);
+	
+	    } .....
+	}
+4，在定时器修改移动图片的frame:
+	[UIView animateWithDuration:self.animationTimeInterval animations:^{
+	    frame.origin.y += 2;
+	    _scanningline.frame = frame;
+	} completion:nil];	
+    
+``` 
+
+
 #### 组件化方案
 * [组件化1](http://www.code4app.com/thread-11117-1-1.html)
 * [组件化2](http://www.code4app.com/thread-14917-1-1.html)

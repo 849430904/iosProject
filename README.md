@@ -437,8 +437,13 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	} completion:nil];	
     
 ``` 
+-----
+####[新闻客户端项目](https://github.com/577528249/TTNews)
 
+------
 
+####[高仿黑迹天气](https://github.com/Zws-China/Weather)
+----
 #### 组件化方案
 * [组件化1](http://www.code4app.com/thread-11117-1-1.html)
 * [组件化2](http://www.code4app.com/thread-14917-1-1.html)
@@ -453,6 +458,7 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 * [网易云信 UI 组件](https://github.com/netease-im/NIM_iOS_UIKit)
 
 ----
+
 
 #### CocoaPods私有库
 * [私有库的创建](https://www.jianshu.com/p/0c640821b36f)

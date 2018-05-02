@@ -4,6 +4,7 @@
 	* [tabbar的实现](#LBStoreMall_tabBar) 
 	* [顶部导航栏的实现](#LBStoreMall_topNav)
 	* [首页布局的实现](#LBStoreMall_HOME)
+	* [快速返回顶部实现](#LBStoreMall_return_top)
 
 ----
 ####
@@ -128,7 +129,7 @@
 ----
 #### <a href="LBStoreMall-master/LBStoreMall/LBStoreMall/classes/controller/home/LBSMHomeController.m" id="LBStoreMall_HOME">首页的布局的实现</a>  [UICollectionView使用](https://my.oschina.net/u/2340880/blog/522613)
 -----
-![](img/02.png)
+* 整体效果：![](img/02.gif)，首页又分为5个section：![](img/19.png)![](img/20.png)![](img/21.png)![](img/22.png)![](img/23.png)
 
 ````
  1，整个首页内容是一个UICollectionView，其中UICollectionView分成了五个section,第个section又分为头、cell、尾；
@@ -178,11 +179,27 @@
 
 * section 1的顶部焦点图滚动采用了一个第三方框架来[实现](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第0组/LBSMSlideshowHeadView.m)
 * section 1的顶部焦点图上下滚动分为三部份：
-![](img/03.png),其中左边部份固定，右边的两部份为两按钮，且可以滚动，[实现源码](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/common/DCNumericalScrollView/DCNumericalScrollView.m)
+![](img/03.png),其中左边部份固定，右边的两部份为两按钮，通过给btn的layer添加CATransform3D来实现滚动，[实现源码](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/common/DCNumericalScrollView/DCNumericalScrollView.m)
 * section 2的实现思路如下：[自定义view](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第1组/LBSMHaoHuoHeadView.m) [自定义cell的源码（中间其实是一个collectionView,里面又有一些小的itemcell）](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/view/home/第1组/LBSMHaoHuoCell.m)
 ![](img/04.png)
 
 ----
+#####<a id="LBStoreMall_return_top" href="LBStoreMall-master/LBStoreMall/LBStoreMall/classes/controller/home/LBSMHomeController.m">快速返回顶部实现<a>
+---
+
+``` 
+   1，首先按钮的位置固定在底部附近，默认隐藏
+   2，在scrollView的代理方法中，判断是否显示:
+       self.backTopButton.hidden = (scrollView.contentOffset.y > [UIScreen cz_screenHeight]) ? NO : YES;
+   3，当点击按钮的时候调用
+      [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+      
+``` 
+
+
+-----
+
+
 ### 直播 https://github.com/ChinaArJun/Tencent-NOW 
 
 [地址]( https://github.com/ChinaArJun/Tencent-NOW )

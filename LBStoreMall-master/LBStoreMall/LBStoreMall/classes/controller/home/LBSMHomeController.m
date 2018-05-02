@@ -134,6 +134,7 @@ static NSString *const HotCommendFootView = @"LBSMHotCommendFootView";
     [_backTopButton addTarget:self action:@selector(scrollToTop) forControlEvents:UIControlEventTouchUpInside];
     [_backTopButton setImage:[UIImage imageNamed:@"btn_UpToTop"] forState:UIControlStateNormal];
     _backTopButton.hidden = YES;
+    //按钮的位置固定在底部
     _backTopButton.frame = CGRectMake([UIScreen cz_screenWidth] - 50, [UIScreen cz_screenHeight] - 110, 40, 40);
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -182,7 +183,7 @@ static NSString *const HotCommendFootView = @"LBSMHotCommendFootView";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
         /// 九宫格
-        return _homeGridArray.count;
+        return _homeGridArray.count;//这里的cell不包括头部和尾部
     }
     if (section == 1) {
         /// 好货秒抢
@@ -286,13 +287,15 @@ static NSString *const HotCommendFootView = @"LBSMHotCommendFootView";
         [self.navigationController pushViewController:goodSetVc animated:YES];
     }
 }
+
+//注意以下两方法返回的4不能随便写，与这个方法有关：- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 /// X间距(这个X、Y的间距需要设置)
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return (section == 4) ? 4 : 0;
 }
 /// Y间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return (section == 4) ? 4 : 0;
+    return (section == 4) ? 4 : 0;//section4指的是第5个
 }
 /// 组头视图、尾视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

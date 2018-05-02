@@ -74,19 +74,7 @@
     //点击tabBarItem动画
     [self tabBarButtonClick:[self getTabBarButton]];
 }
-- (UIControl *)getTabBarButton{
-    NSMutableArray *tabBarButtons = [[NSMutableArray alloc]initWithCapacity:0];
-    
-    for (UIView *tabBarButton in self.tabBar.subviews) {
-        if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]){
-            [tabBarButtons addObject:tabBarButton];
-        }
-    }
-    // 点击了那个index
-    UIControl *tabBarButton = [tabBarButtons objectAtIndex:self.selectedIndex];
-    LBSMLog(@"%lu",(unsigned long)self.selectedIndex);
-    return tabBarButton;
-}
+
 // 点击动画
 - (void)tabBarButtonClick:(UIControl *)tabBarButton
 {   // tabBarButton 上面有图片和title
@@ -102,6 +90,20 @@
             [imageView.layer addAnimation:animation forKey:nil];
         }
     }
+}
+
+- (UIControl *)getTabBarButton{
+    NSMutableArray *tabBarButtons = [[NSMutableArray alloc]initWithCapacity:0];
+    
+    for (UIView *tabBarButton in self.tabBar.subviews) {
+        if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]){
+            [tabBarButtons addObject:tabBarButton];
+        }
+    }
+    // 点击了那个index
+    UIControl *tabBarButton = [tabBarButtons objectAtIndex:self.selectedIndex];
+    LBSMLog(@"%lu",(unsigned long)self.selectedIndex);
+    return tabBarButton;
 }
 
 // 禁止屏幕旋转

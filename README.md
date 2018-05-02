@@ -1,9 +1,15 @@
-* OC项目
 
-## LBStoreMall 电商，只弄了首页
+####目录
+* [LBStoreMall](#LBStoreMall)
+	* [tabbar的实现](#LBStoreMall_tabBar) 
+
+----
+####
+
+## <a id="LBStoreMall">LBStoreMall 电商，只弄了首页</a>
 [来源](https://github.com/lb2281075105/LBStoreMall) [本地](LBStoreMall/LBStoreMall)
 
-*  tabBar的封装
+*  <a id="LBStoreMall_tabBar" href="https://github.com/lb2281075105/LBStoreMall/blob/master/LBStoreMall/LBStoreMall/classes/controller/main/LBSMTabBarController.m">tabBar的封装源码</a>，tabBar效果图：![](img/18.gif)
 
 
 ````
@@ -22,7 +28,17 @@
 	}
 	3，在viewdidload方法里面调用addChildViewController添加控制器
 ````
+* 点击tabBar动画实现思路如下：
 
+````
+  1，实现UITabBarControllerDelegate
+  2，在tabBar的代理方法：- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController中
+  3，
+````
+
+
+
+-------
 * 顶部导航栏的实现
 
 ![](img/01.png)

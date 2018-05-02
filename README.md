@@ -2,6 +2,8 @@
 ####目录
 * [LBStoreMall](#LBStoreMall)
 	* [tabbar的实现](#LBStoreMall_tabBar) 
+	* [顶部导航栏的实现](#LBStoreMall_topNav)
+	* [首页布局的实现](#LBStoreMall_HOME)
 
 ----
 ####
@@ -28,20 +30,63 @@
 	}
 	3，在viewdidload方法里面调用addChildViewController添加控制器
 ````
-* 点击tabBar动画实现思路如下：
+* 点击tabBar动画实现思路如下：[TabBarItem添加动画的一种思路](https://www.jianshu.com/p/89d3fb9949ff)
 
 ````
   1，实现UITabBarControllerDelegate
   2，在tabBar的代理方法：- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController中
-  3，
+  3，在代理方法中获取选中的UITabBarButton
+  4，遍历UITabBarButton中的subView，找到imageView,为ImageView添加动画
+  
+代码如下：
+	// 代理方法
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    //点击tabBarItem动画
+    [self tabBarButtonClick:[self getTabBarButton]];
+}
+
+// 点击动画
+- (void)tabBarButtonClick:(UIControl *)tabBarButton
+{   // tabBarButton 上面有图片和title
+    for (UIView *imageView in tabBarButton.subviews) {
+        if ([imageView isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
+            // 需要实现的帧动画,这里根据自己需求改动
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];// 关键帧动画
+            animation.keyPath = @"transform.scale";
+            animation.values = @[@1.0,@1.1,@0.9,@1.0];//原图->放大->缩小->原图
+            animation.duration = 0.3;//持续时间
+            animation.calculationMode = kCAAnimationCubic;
+            // 添加动画
+            [imageView.layer addAnimation:animation forKey:nil];
+        }
+    }
+}
+
+- (UIControl *)getTabBarButton{
+    NSMutableArray *tabBarButtons = [[NSMutableArray alloc]initWithCapacity:0];
+    
+    for (UIView *tabBarButton in self.tabBar.subviews) {
+        if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]){
+            [tabBarButtons addObject:tabBarButton];
+        }
+    }
+    // 点击了那个index
+    UIControl *tabBarButton = [tabBarButtons objectAtIndex:self.selectedIndex];
+    LBSMLog(@"%lu",(unsigned long)self.selectedIndex);
+    return tabBarButton;
+}
+   
 ````
 
 
 
 -------
-* 顶部导航栏的实现
+
+* <a id="LBStoreMall_topNav">顶部导航栏的实现</a>
 
 ![](img/01.png)
+
+* 相关代码：[LBSMHomeController setUpNav](https://github.com/lb2281075105/LBStoreMall/blob/master/LBStoreMall/LBStoreMall/classes/controller/home/LBSMHomeController.m)    [LBTitleView](https://github.com/lb2281075105/LBStoreMall/blob/master/LBStoreMall/LBStoreMall/classes/view/titleView/LBTitleView.m)  [LBSMSearchTextField](https://github.com/lb2281075105/LBStoreMall/blob/master/LBStoreMall/LBStoreMall/classes/view/search/LBSMSearchTextField.m)
 
 ````
 1,红色背景为颜色：
@@ -80,8 +125,9 @@
 	}
 	   
 ````
-* [首页的布局的实现](LBStoreMall-master/LBStoreMall/LBStoreMall/classes/controller/home/LBSMHomeController.m)
-
+----
+#### <a href="LBStoreMall-master/LBStoreMall/LBStoreMall/classes/controller/home/LBSMHomeController.m" id="LBStoreMall_HOME">首页的布局的实现</a>  [UICollectionView使用](https://my.oschina.net/u/2340880/blog/522613)
+-----
 ![](img/02.png)
 
 ````

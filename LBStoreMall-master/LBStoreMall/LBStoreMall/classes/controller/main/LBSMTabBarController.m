@@ -81,10 +81,10 @@
     for (UIView *imageView in tabBarButton.subviews) {
         if ([imageView isKindOfClass:NSClassFromString(@"UITabBarSwappableImageView")]) {
             // 需要实现的帧动画,这里根据自己需求改动
-            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];// 关键帧动画
             animation.keyPath = @"transform.scale";
-            animation.values = @[@1.0,@1.1,@0.9,@1.0];
-            animation.duration = 0.3;
+            animation.values = @[@1.0,@1.1,@0.9,@1.0];//原图->放大->缩小->原图
+            animation.duration = 0.3;//持续时间
             animation.calculationMode = kCAAnimationCubic;
             // 添加动画
             [imageView.layer addAnimation:animation forKey:nil];

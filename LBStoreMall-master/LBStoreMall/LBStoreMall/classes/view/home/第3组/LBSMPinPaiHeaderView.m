@@ -30,6 +30,8 @@
     [super layoutSubviews];
     
     [_pinPaiButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        //等价于
+        //make.top.left.bottom.and.right.equalTo(self);
         make.edges.mas_equalTo(self);
     }];
 }

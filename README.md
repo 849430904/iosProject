@@ -516,6 +516,12 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	} completion:nil];	
     
 ``` 
+
+-----
+####[今日头条](https://github.com/hrscy/TodayNews.git)
+
+
+
 -----
 ####[新闻客户端项目](https://github.com/577528249/TTNews)
 
@@ -550,4 +556,9 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* [二维码](https://github.com/kingsic/SGQRCode)
 	* [Swift 自动布局框架SnapKit](http://www.hangge.com/blog/cache/detail_1097.html)
 	
-	
+
+----
+* collectionview demo
+	* [https://github.com/jasnig/CollectionViewLayout](https://github.com/jasnig/CollectionViewLayout)  
+	* [https://www.jianshu.com/p/cabec2786241](https://www.jianshu.com/p/cabec2786241) 
+	* [https://www.jianshu.com/p/45ff718090a8](https://www.jianshu.com/p/45ff718090a8)	

@@ -518,6 +518,11 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 ``` 
 
 -----
+
+
+##### [仿《想去》首页的流水布局demo](https://github.com/ljunb/LJBLineLayoutDemo)
+
+
 ####[今日头条](https://github.com/hrscy/TodayNews.git)
 
 
@@ -544,6 +549,12 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 
 ----
 
+
+####
+------
+* [各类开源的app收集](https://github.com/dkhamsing/open-source-ios-apps)
+
+----
 
 #### CocoaPods私有库
 * [私有库的创建](https://www.jianshu.com/p/0c640821b36f)

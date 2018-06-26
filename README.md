@@ -6,6 +6,9 @@
 	* [首页布局的实现](#LBStoreMall_HOME)
 	* [快速返回顶部实现](#LBStoreMall_return_top)
 
+* [下拉刷新图片放大效果](#下拉刷新图片放大效果)
+
+
 ----
 ####
 
@@ -520,7 +523,24 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 -----
 
 
+#### <span id="下拉刷新图片放大效果">[下拉刷新图片放大效果](https://github.com/IMLoser/HWMineImage)</span>
+   ![](img/HWMeImage.gif)实现思路如下：![](img/24.png)
+
+*    两个关键点：
+	* 设置图片的拉伸模式为：UIViewContentModeScaleAspectFill
+	* 下拉滚动的时候，在代理方法中不断的修改图片的高度，由于设置了拉伸模式，高度会自动跟着拉伸；    
+   
+
+-----
+
 ##### [仿《想去》首页的流水布局demo](https://github.com/ljunb/LJBLineLayoutDemo)
+![](img/25.gif)
+
+* 主要通过重写以下几个方法来实现：[可以参考](https://www.jianshu.com/p/0d197328083e)
+	* - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect //返回rect中的所有的元素的布局属性
+	* - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds //当边界发生改变时，是否应该刷新布局
+	* - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity //这个方法简单理解可以当作是用来设置collectionView的偏移量的，计算当前屏幕哪个item中心点距离屏幕中心点近，就将该item拉到中心去。
+
 
 
 ####[今日头条](https://github.com/hrscy/TodayNews.git)
@@ -534,17 +554,6 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 
 ####[高仿黑迹天气](https://github.com/Zws-China/Weather)
 ----
-
-------
-
-####[今日头条](https://github.com/hrscy/TodayNews)
-----
-
-------
-
-####[今日头条](https://github.com/hrscy/TodayNews)
-----
-
 #### 组件化方案
 * [组件化1](http://www.code4app.com/thread-11117-1-1.html)
 * [组件化2](http://www.code4app.com/thread-14917-1-1.html)
@@ -557,7 +566,6 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 * [高仿腾讯旗下[NOW]直播](https://github.com/ChinaArJun/Tencent-NOW)
 * [WebRTC音频通信](https://github.com/tuyaohui/WebRTC_iOS)
 * [网易云信 UI 组件](https://github.com/netease-im/NIM_iOS_UIKit)
-*  [仿印客直播](https://github.com/NorthDogLi/swift4.0_NDYKLiving)
 
 ----
 
@@ -585,3 +593,4 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* [https://github.com/jasnig/CollectionViewLayout](https://github.com/jasnig/CollectionViewLayout)  
 	* [https://www.jianshu.com/p/cabec2786241](https://www.jianshu.com/p/cabec2786241) 
 	* [https://www.jianshu.com/p/45ff718090a8](https://www.jianshu.com/p/45ff718090a8)	
+	* [仿想去网流水布局](https://github.com/ljunb/LJBLineLayoutDemo)

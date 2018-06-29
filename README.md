@@ -586,7 +586,9 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
     
 ``` 
 
-####[今日头条](https://github.com/hrscy/TodayNews.git)
+
+#### [仿今日头条首页滚动](https://github.com/kingsic/SGPagingView#%E6%95%88%E6%9E%9C%E5%9B%BE)
+#### [今日头条](https://github.com/hrscy/TodayNews.git)
 
 
 
@@ -629,6 +631,7 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* [ReactiveCocoa 响应式编程](https://github.com/AllenSWB/ReactiveCocoaStudy)
 	* [二维码](https://github.com/kingsic/SGQRCode)
 	* [Swift 自动布局框架SnapKit](http://www.hangge.com/blog/cache/detail_1097.html)
+	* [BMPlayer视频播放器](https://github.com/BrikerMan/BMPlayer/blob/master/README.zh.md#%E6%95%88%E6%9E%9C)
 	
 
 ----

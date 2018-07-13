@@ -586,7 +586,7 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* [ReactiveCocoa 响应式编程](https://github.com/AllenSWB/ReactiveCocoaStudy)
 	* [二维码](https://github.com/kingsic/SGQRCode)
 	* [Swift 自动布局框架SnapKit](http://www.hangge.com/blog/cache/detail_1097.html)
-	
+	*  [侧滑菜单库](https://github.com/John-Lluch/SWRevealViewController) 	
 
 ----
 * collectionview demo

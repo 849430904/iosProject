@@ -1696,7 +1696,7 @@
 				TargetAttributes = {
 					F596DA461D869FD30058844C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = P4CHPWGV4E;
+						DevelopmentTeam = 43F7CYY8Z5;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -2163,7 +2163,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = P4CHPWGV4E;
+				DEVELOPMENT_TEAM = 43F7CYY8Z5;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2185,7 +2185,7 @@
 					"$(PROJECT_DIR)/WTKWineMVVM/Vendor/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/WTKWineMVVM/Vendor/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wang.WTKWineMVVM321;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wang.WTKWineMVVM321000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 2.3;
@@ -2201,7 +2201,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = YES;
-				DEVELOPMENT_TEAM = P4CHPWGV4E;
+				DEVELOPMENT_TEAM = 43F7CYY8Z5;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2223,7 +2223,7 @@
 					"$(PROJECT_DIR)/WTKWineMVVM/Vendor/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/WTKWineMVVM/Vendor/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wang.WTKWineMVVM321;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wang.WTKWineMVVM321000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 2.3;

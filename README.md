@@ -542,8 +542,53 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity //这个方法简单理解可以当作是用来设置collectionView的偏移量的，计算当前屏幕哪个item中心点距离屏幕中心点近，就将该item拉到中心去。
 
 
+-----
 
-####[今日头条](https://github.com/hrscy/TodayNews.git)
+##### [仿摩拜的侧滑栏](https://github.com/jiangyongjian/JYJSlideMenuController)
+![](img/26.gif)
+
+``` 
+   1,点击个人中心的时候，将JYJAnimateViewController添加到本控制器
+      // 展示个人中心
+    JYJAnimateViewController *vc = [[JYJAnimateViewController alloc] init];
+    self.vc = vc;
+    vc.view.backgroundColor = [UIColor clearColor];
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    
+   2，在JYJAnimateViewController的viewDidLoad中，设置一个阴影的view,然后添加ChildViewController
+         // 半透明的view
+    UIView *bgView = [[UIView alloc] init];
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.frame = [UIScreen mainScreen].bounds;
+    bgView.alpha = 0;
+    [self.view addSubview:bgView];
+    self.bgView = bgView; 
+    ......
+     // 添加控制器
+    JYJPersonViewController *leftVc = [[JYJPersonViewController alloc] init];
+    leftVc.view.backgroundColor = [UIColor redColor];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 50;
+    if ([UIScreen mainScreen].bounds.size.width > 375) {
+        width -= 50;
+    } else if ([UIScreen mainScreen].bounds.size.width > 320) {
+        width = width - 25;
+    }
+    leftVc.view.frame = CGRectMake(-width, 0, width, [UIScreen mainScreen].bounds.size.height);
+    [self.view addSubview:leftVc.view];
+    [self addChildViewController:leftVc];
+    self.leftVc = leftVc;
+    // 展示
+    [self showAnimation];//动画其实就是改变控制器和背景view的frame
+
+   3，在 JYJPersonViewController中设置最终的布局
+    
+    
+``` 
+
+
+#### [仿今日头条首页滚动](https://github.com/kingsic/SGPagingView#%E6%95%88%E6%9E%9C%E5%9B%BE)
+#### [今日头条](https://github.com/hrscy/TodayNews.git)
 
 
 
@@ -586,7 +631,12 @@ RACCommand:RAC中用于处理事件的类，可以把事件如何处理,事件�
 	* [ReactiveCocoa 响应式编程](https://github.com/AllenSWB/ReactiveCocoaStudy)
 	* [二维码](https://github.com/kingsic/SGQRCode)
 	* [Swift 自动布局框架SnapKit](http://www.hangge.com/blog/cache/detail_1097.html)
+<<<<<<< HEAD
 	*  [侧滑菜单库](https://github.com/John-Lluch/SWRevealViewController) 	
+=======
+	* [BMPlayer视频播放器](https://github.com/BrikerMan/BMPlayer/blob/master/README.zh.md#%E6%95%88%E6%9E%9C)
+	
+>>>>>>> origin/master
 
 ----
 * collectionview demo
